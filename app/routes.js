@@ -50,7 +50,7 @@ module.exports = function(app) {
 
 		patient.save(function(err){
 			if(!err){
-				res.json(patient);
+				res.json({message : "Created patient"});
 				//return console.log("Created patient" + patient.lastName);
 			} else {
 				//return console.log(err);
@@ -75,17 +75,20 @@ module.exports = function(app) {
 
 	//PUT
 	//Update a single patient by ID
-	app.put('/api/products/:id', function(req, res){
-		patientModel.findByID(req.params.id, function(err, patient){
+	app.put('/api/patients/:id', function(req, res){
+		patientModel.findOne({ _id: req.params.id }, function(err, patient){
+			
+			if(err)
+				res.send(err);
+
 			patient.lastName = req.body.lastName;
 			patient.firstName = req.body.firstName;
 
 			patient.save(function(err){
-				if(!err){
-					res.json({message: patient.lastName + " updated"});
-				} else {
-					console.log(err);
-				}
+				if(err)
+					res.send(err);
+
+				res.json({message: patient.lastName + " updated"});
 			});
 		});
 	});
