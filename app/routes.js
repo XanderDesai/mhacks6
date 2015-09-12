@@ -9,14 +9,14 @@ module.exports = function(app) {
 
 	// frontend routes =========================================================
 	// route to handle all angular requests
-	app.get('*', function(req, res) {
+	/*app.get('*', function(req, res) {
 		res.sendfile('./public/index.html');
-	});
+	});*/
 
 	//GET
 	//Return all the patients in the db
 	app.get('/api/patients', function(req, res){
-		return patientModel.find(function(err, patients){
+		patientModel.find(function(err, patients){
 			if(!err){
 				res.json(patients);
 			} else {
@@ -67,7 +67,7 @@ module.exports = function(app) {
 			return patient.remove(function(err){
 				if(!err){
 					console.log(patient.lastName + " has been removed");
-					return res.send('');
+					res.send('');
 				} else {
 					console.log(err);
 				}
@@ -78,18 +78,16 @@ module.exports = function(app) {
 	//PUT
 	//Update a single patient by ID
 	app.put('/api/products/:id', function(req, res){
-		return patientModel.findByID(req.params.id, function(err, patient){
+		patientModel.findByID(req.params.id, function(err, patient){
 			patient.lastName = req.body.lastName;
 			patient.firstName = req.body.firstName;
 
-			return patient.save(function(err){
+			patient.save(function(err){
 				if(!err){
-					console.log(patient.lastName + " updated");
+					res.json({message: patient.lastName + " updated"});
 				} else {
 					console.log(err);
 				}
-
-				return res.send(patient);
 			});
 		});
 	});
