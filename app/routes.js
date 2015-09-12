@@ -63,15 +63,13 @@ module.exports = function(app) {
 	//DELETE
 	//Remove a single patient by ID
 	app.delete('/api/patients/:id', function(req, res){
-		return patientModel.findById(req.param.id, function(err, patient){
-			return patient.remove(function(err){
-				if(!err){
-					console.log(patient.lastName + " has been removed");
-					res.send('');
-				} else {
-					console.log(err);
-				}
-			});
+		patientModel.remove({
+			_id: req.params.id
+		}, function(err, patient){
+			if(err){
+				return res.send(err);
+			}
+			res.json({message : "Patient has been removed"});
 		});
 	});
 
