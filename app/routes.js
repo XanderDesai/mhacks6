@@ -9,14 +9,14 @@ module.exports = function(app) {
 
 	// frontend routes =========================================================
 	// route to handle all angular requests
-	app.get('*', function(req, res) {
+	/*app.get('*', function(req, res) {
 		res.sendfile('./public/index.html');
-	});
+	});*/
 
 	//GET
 	//Return all the patients in the db
 	app.get('/api/patients', function(req, res){
-		return patientModel.find(function(err, patients){
+		patientModel.find(function(err, patients){
 			if(!err){
 				res.json(patients);
 			} else {
@@ -50,7 +50,7 @@ module.exports = function(app) {
 
 		patient.save(function(err){
 			if(!err){
-				res.json(patient);
+				res.json({message : "Created patient"});
 				//return console.log("Created patient" + patient.lastName);
 			} else {
 				//return console.log(err);
@@ -63,33 +63,32 @@ module.exports = function(app) {
 	//DELETE
 	//Remove a single patient by ID
 	app.delete('/api/patients/:id', function(req, res){
-		return patientModel.findById(req.param.id, function(err, patient){
-			return patient.remove(function(err){
-				if(!err){
-					console.log(patient.lastName + " has been removed");
-					return res.send('');
-				} else {
-					console.log(err);
-				}
-			});
+		patientModel.remove({
+			_id: req.params.id
+		}, function(err, patient){
+			if(err){
+				return res.send(err);
+			}
+			res.json({message : "Patient has been removed"});
 		});
 	});
 
 	//PUT
 	//Update a single patient by ID
-	app.put('/api/products/:id', function(req, res){
-		return patientModel.findByID(req.params.id, function(err, patient){
+	app.put('/api/patients/:id', function(req, res){
+		patientModel.findOne({ _id: req.params.id }, function(err, patient){
+			
+			if(err)
+				res.send(err);
+
 			patient.lastName = req.body.lastName;
 			patient.firstName = req.body.firstName;
 
-			return patient.save(function(err){
-				if(!err){
-					console.log(patient.lastName + " updated");
-				} else {
-					console.log(err);
-				}
+			patient.save(function(err){
+				if(err)
+					res.send(err);
 
-				return res.send(patient);
+				res.json({message: patient.lastName + " updated"});
 			});
 		});
 	});
