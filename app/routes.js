@@ -18,9 +18,9 @@ module.exports = function(app) {
 	app.get('/api/patients', function(req, res){
 		return patientModel.find(function(err, patients){
 			if(!err){
-				return res.send(patients);
+				res.json(patients);
 			} else {
-				return console.log(err);
+				res.send(err);
 			}
 		});
 	});
@@ -30,9 +30,9 @@ module.exports = function(app) {
 	app.get('/api/patients/:id', function(req, res){
 		return patientModel.findById(req.params.id, function(err, patient){
 			if(!err){
-				return res.send(patient);
+				res.json(patient);
 			} else {
-				return console.log(err);
+				res.send(err);
 			}
 		});
 	});
@@ -50,13 +50,14 @@ module.exports = function(app) {
 
 		patient.save(function(err){
 			if(!err){
-				return console.log("Created patient" + patient.lastName);
+				res.json(patient);
+				//return console.log("Created patient" + patient.lastName);
 			} else {
-				return console.log(err);
+				//return console.log(err);
 			}
 		});
 
-		return res.send(patient);
+		//return res.send(patient);
 	});
 
 	//DELETE
