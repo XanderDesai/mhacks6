@@ -12,7 +12,8 @@
 	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
 
 	<!-- JS -->
-	<script src="libs/angular/angular.min.js"></script>
+	<!--<script src="libs/angular/angular.min.js"></script>-->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
 	<script src="libs/angular-route/angular-route.min.js"></script>
 	<script src="libs/angular-bootstrap/ui-bootstrap.min.js"></script>
 
@@ -28,12 +29,25 @@
 </head>
 
 <body ng-app="sampleApp" ng-controller="MainController">
-<div class="container">
+	<div class="container">
 
-	<h3><span class="label label-default"> {{ tagline }}</span></h3>
-	<!-- ANGULAR DYNAMIC CONTENT -->
-	<div ng-view></div>
+		<div class="container">
+			<form>
+			  <div class="form-group">
+			    <label for="inputLastName">First Name</label>
+			    <input type="text" class="form-control input-lg" placeholder="First Name" ng-model="formData.firstName">
+			  </div>
+			  <div class="form-group">
+			    <label for="inputFirstName">Last Name</label>
+			    <input type="text" class="form-control input-lg" placeholder="Last Name" ng-model="formData.lastName">
+			  </div>
+			  <button type="submit" class="btn btn-default" ng-click="createPatient()">Submit</button>
+			</form>
+		</div>
 
-</div>
+		<!-- ANGULAR DYNAMIC CONTENT -->
+		<div ng-view></div>
+
+	</div>
 </body>
 </html>
