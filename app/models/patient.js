@@ -8,7 +8,7 @@ var Schema = mongoose.Schema
 var PatientInfo = new Schema ({
 	// basic info
 	lastName : { type : String, required: true}, 
-	firstName: { type : String, required: true}, 
+	firstName: { type : String, required: true}
 });
 // 	MI: String,
 // 	gender: { 
