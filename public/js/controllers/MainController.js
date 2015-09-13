@@ -1,10 +1,11 @@
 app.controller('MainController', ['$scope', '$http', 'PatientService', function($scope, $http, PatientService) {
 	$scope.formData = {}
+	// $scope.patients = {[]}
 
 	// get all
-	// PatientService.get().success(function(data) {
-		
-	// })
+	PatientService.get().success(function(data) {
+		$scope.patients = data
+	})
 
 	// get one 
 

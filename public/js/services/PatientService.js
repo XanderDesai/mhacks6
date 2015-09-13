@@ -9,7 +9,7 @@ app.factory('PatientService', ['$http', function($http) {
             return $http.post('/api/patients', patientData);
         },
         // get one patient
-        get : function(id) {
+        getOne : function(id) {
             return $http.get('/api/patients/' + id);
         },
         // update one patient
