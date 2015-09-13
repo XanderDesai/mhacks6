@@ -53,6 +53,7 @@ module.exports = function(app) {
 				res.json({message : "Created patient"});
 				//return console.log("Created patient" + patient.lastName);
 			} else {
+				res.send(err);
 				//return console.log(err);
 			}
 		});

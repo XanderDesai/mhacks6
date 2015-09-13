@@ -1,7 +1,13 @@
-<!-- <div class="jumbotron text-center">
-	
-	<h1 class="bg-danger">UnderWater Squad</h1>
-
-	<button type="button" class="btn btn-danger btn-lg"><a href ="https://www.youtube.com/watch?v=DPC9erC5WqU">Danger</a></button>
-
-</div> -->
+<div class="container">
+	<form>
+	  <div class="form-group">
+	    <label for="inputLastName">First Name</label>
+	    <input type="text" class="form-control input-lg" placeholder="First Name" ng-model="formData.firstName">
+	  </div>
+	  <div class="form-group">
+	    <label for="inputFirstName">Last Name</label>
+	    <input type="text" class="form-control input-lg" placeholder="Last Name" ng-model="formData.lastName">
+	  </div>
+	  <button type="submit" class="btn btn-default" ng-click="createPatient()">Submit</button>
+	</form>
+</div>

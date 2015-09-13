@@ -1,9 +1,8 @@
-angular.module('MainController', []).controller('MainController', function($scope, $http, Patients) {
-	$scope.formData = {
-	}
+app.controller('MainController', ['$scope', '$http', 'PatientService', function($scope, $http, PatientService) {
+	$scope.formData = {}
 
 	// get all
-	// Patients.get().success(function(data) {
+	// PatientService.get().success(function(data) {
 		
 	// })
 
@@ -15,7 +14,7 @@ angular.module('MainController', []).controller('MainController', function($scop
 			$scope.formData.lastName != undefined) {
 			// validate the formData to make sure that something is there
             // if form is empty, nothing will happen
-			Patients.create($scope.formData)
+			PatientService.create($scope.formData)
 				// if successful creation, call our get function to get all the new todos
                 .success(function(data) {
                     $scope.formData = {}; // clear the form so our user is ready to enter another
@@ -28,9 +27,4 @@ angular.module('MainController', []).controller('MainController', function($scop
 	// $scope.deletPatient = function() {
 
 	// }
-});
-// angular.module('MainController', []).controller('MainController', function($scope) {
-
-// 	$scope.tagline = 'YOLO for life';	
-
-// });
+}]);
