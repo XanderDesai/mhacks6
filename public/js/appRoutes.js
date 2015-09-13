@@ -7,6 +7,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/home.html',
 			controller: 'MainController'
 		})
+		
+		.when('/twilio', {
+			templateUrl: 'views/twilio.html',
+			controller: 'TwilioController'
+		})
 
 	$locationProvider.html5Mode(true);
 

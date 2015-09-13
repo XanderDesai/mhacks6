@@ -1,1 +1,1 @@
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainController', 'PatientService']);
+var app = angular.module('sampleApp', ['ngRoute', 'appRoutes']);
