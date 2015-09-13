@@ -1,13 +1,67 @@
 <div class="container">
 	<form>
-	  <div class="form-group">
+	<div class="row">
+	  <div class="form-group col-md-5">
 	    <label for="inputLastName">First Name</label>
 	    <input type="text" class="form-control input-lg" placeholder="First Name" ng-model="formData.firstName">
 	  </div>
-	  <div class="form-group">
+	  <div class="form-group col-md-5">
 	    <label for="inputFirstName">Last Name</label>
 	    <input type="text" class="form-control input-lg" placeholder="Last Name" ng-model="formData.lastName">
 	  </div>
-	  <button type="submit" class="btn btn-default" ng-click="createPatient()">Submit</button>
+	  <div class="form-group col-md-2">
+	  	<label for="inputMI">MI</label>
+	    <input type="text" class="form-control input-lg" ng-model="formData.MI">
+	  </div>
+	</div>
+
+	<div class="row">
+	  <div class="form-group col-md-4">
+	    <label for="inputBirthDate">Birth Date</label>
+	    <input type="text" class="form-control input-lg" placeholder="mm/dd/yyyy" ng-model="formData.birthDate">
+	  </div>
+	  <div class="form-group col-md-4">
+	    <label for="inputRace">Race</label>
+	    <input type="text" class="form-control input-lg" ng-model="formData.race">
+	  </div>
+	  <div class="form-group col-md-4">
+	  	<label for="inputPhoneNumber">Phone Number</label>
+	    <input type="text" class="form-control input-lg" ng-model="formData.phoneNumber">
+	  </div>
+	</div>
+
+	<div class="row">
+	  <div class="form-group col-md-4">
+	    <label for="inputAddress">Address</label>
+	    <input type="text" class="form-control input-lg" ng-model="formData.address">
+	  </div>
+	  <div class="form-group col-md-4">
+	    <label for="inputCity">City</label>
+	    <input type="text" class="form-control input-lg" ng-model="formData.city">
+	  </div>
+	  <div class="form-group col-md-2">
+	  	<label for="inputState">State</label>
+	    <input type="text" class="form-control input-lg" ng-model="formData.state">
+	  </div>
+	  <div class="form-group col-md-2">
+	  	<label for="inputZip">Zip</label>
+	    <input type="text" class="form-control input-lg" ng-model="formData.zip">
+	  </div>
+	</div>
+
+	<div class="row">
+		<div class="checkbox col-md-2">
+		    <label>
+		      <input type="checkbox"> Alcohol Consume
+		    </label>
+  		</div>
+  		<div class="checkbox col-md-2">
+		    <label>
+		      <input type="checkbox"> Alcohol Consume
+		    </label>
+  		</div>
+	</div>
+	 <button type="submit" class="btn btn-default" ng-click="createPatient()">Submit</button>
 	</form>
+
 </div>
