@@ -8,9 +8,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'MainController'
 		})
 		
-		.when('/twilio', {
-			templateUrl: 'views/twilio.html',
-			controller: 'TwilioController'
+		.when('/patientmap', {
+			templateUrl: 'views/map.html',
+			controller: 'MapController'
 		})
 
 	$locationProvider.html5Mode(true);
